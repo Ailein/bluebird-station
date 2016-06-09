@@ -8,11 +8,12 @@ var strategy = new LocalStrategy({
   },
   function(req, email, password, callback) {
     // Find a user with this e-mail
-    User.findOne({ 'local.email' :  email }, function(err, user) {
-      if (err) return callback(err);
-      if (user) {
-        // A user with this email already exists
-        return callback(null, false, req.flash('error', 'This email is already taken.'));
+    console.log('here');
+    User.find()
+    .then(function(user) {
+      if (user.length > 0) {
+        // A user already exists
+        return callback(null, false);
       }
       else {
         // Create a new user

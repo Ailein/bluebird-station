@@ -14,7 +14,11 @@ router.get('/currentUser', function(req, res, next) {
 
 // Signup Page
 router.post('/signup', passport.authenticate('local-signup'), function(req, res) {
-	res.json(req.user);
+	if(req.user) {
+		res.json(req.user);
+	}else {
+		res.json({msg: 'A user already exists.'});
+	}
 });
 
 // Login Page
