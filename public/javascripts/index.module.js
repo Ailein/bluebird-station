@@ -26,8 +26,24 @@ angular.module('bbsApp', ['ngMaterial', 'ui.router'])
 			console.log('login');
 		}
 	};
+	var dataset = {
+		name: 'dataset',
+		url: '/dataset/:dsID',
+		templateUrl: 'partials/dataset.html',
+		controller: 'datasetCtrl',
+		controllerAs: 'dsctrl',
+		onEnter: function() {
+			console.log('dataset');
+		},
+		resolve: {
+			datasetPromise: function($http, $stateParams) {
+				return $http.get('/twitexp/dataset/' + $stateParams.dsID);
+			}
+		}
+	};
 
 	$stateProvider.state(home);
 	$stateProvider.state(fourzerofour);
 	$stateProvider.state(login);
+	$stateProvider.state(dataset);
 });

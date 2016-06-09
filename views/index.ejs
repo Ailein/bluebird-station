@@ -4,6 +4,7 @@
     <title>BlueBird Station</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 		<link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/sidenav.css">
 		<script src="/bower_components/jQuery/dist/jquery.min.js"></script>
 		<script src="/bower_components/angular/angular.js"></script>
 		<script src="/bower_components/angular-aria/angular-aria.js"></script>
@@ -14,10 +15,22 @@
 
 		<script src="/javascripts/index.module.js"></script>
 		<script src="/javascripts/controllers/main.controller.js"></script>
+		<script src="/javascripts/controllers/dataset.controller.js"></script>
 		</head>
   <body ng-app='bbsApp'>
   	<div layout="row" ng-controller="mainCtrl as mctrl">
-  		<!-- Nav Goes Here -->
+	  	<a class='nav-trigger' ng-click="mctrl.openLeftMenu()">
+	  		<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+	  	</a>
+		  <md-sidenav md-component-id="left" class="md-sidenav-left">
+		  	<h1 ui-sref="home" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Home</h1>
+		    <h1 ui-sref="login" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Login</h1>
+		    <h1 ng-click='mctrl.logout(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>Logout</h1>
+		    <h1 ng-repeat='dataset in mctrl.allDS' ui-sref='dataset({dsID: dataset._id})' ng-click='mctrl.openLeftMenu();' class='sidenav-item'>{{dataset.keyText}}</h1>
+		  </md-sidenav>
 		  <div ui-view class='view-wrap fade'>
 
 		  </div>

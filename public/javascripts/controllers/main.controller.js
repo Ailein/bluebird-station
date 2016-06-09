@@ -6,19 +6,34 @@ angular.module('bbsApp')
 	self.email;
 	self.password;
 
+	self.allDS;
+	self.currentDS;
+
 	self.errMsg;
 
 	self.getCurrentUser = function() {
 		$http.get('/currentUser')
 		.then(function(res) {
-			console.log('Current User' + res.data);
+			console.log('Current User: ');
+			console.log(res.data);
 			self.user = res.data;
 		});
 	}
 
+	self.getCurrentUser();
+
+	self.getAllDatasets = function() {
+		$http.get('/twitexp/datasets')
+		.then(function(res) {
+			console.log('All Datasets: ');
+			console.log(res.data);
+			self.allDS = res.data;
+		});
+	}
+
+	self.getAllDatasets();
+
 	self.submitLogin = function() {
-		console.log('Email: ' + self.email);
-		console.log('Password: ' + self.password);
 		$http.post('/login', {email: self.email, password: self.password})
 		.then(function(res) {
 			if(res.data) {
@@ -30,4 +45,8 @@ angular.module('bbsApp')
 			}
 		});
 	}
+
+	self.openLeftMenu = function() {
+		$mdSidenav('left').toggle();
+	};
 });
