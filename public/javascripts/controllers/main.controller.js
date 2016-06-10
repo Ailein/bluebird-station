@@ -45,6 +45,15 @@ angular.module('bbsApp')
 		});
 	}
 
+	self.submitLogout = function() {
+		$http.get('/logout')
+		.then(function(res) {
+			console.log(res.data.msg);
+			self.user = null;
+			$state.go('home');
+		});
+	}
+
 	self.openLeftMenu = function() {
 		$mdSidenav('left').toggle();
 	};

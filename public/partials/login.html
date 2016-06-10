@@ -1,0 +1,16 @@
+<div class='login-wrap'>
+	<h2 class='error-message' ng-show='mctrl.errMsg'>{{mctrl.errMsg}}</h2>
+
+	<form class='login-form' method="post" action="/login" ng-submit='$event.preventDefault()'>
+		<div>
+			<label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="text" name="email" id="email" ng-model='mctrl.email'>
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" ng-model='mctrl.password'>
+		</div>
+
+		<a ng-click="mctrl.submitLogin()" >Submit</a>
+	</form>
+</div>
