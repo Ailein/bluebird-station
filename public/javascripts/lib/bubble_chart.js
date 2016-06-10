@@ -12,7 +12,7 @@ function bubbleChart() {
   // Processed Data
   var pdata;
   var keywordArr = [];
-  var colorArr = ['#FF6363', '#5E9BE0', '#61F2A7']; // Needs to be implemented in the dataset creation and then created dynamically here
+  var colorArr = [];
 
   // Constants for sizing
   var width = 940;
@@ -155,7 +155,6 @@ function bubbleChart() {
   function setWH(selector) {
     width = $(selector).width();
     height = $(selector).height();
-    console.log('test');
     center = { x: width / 2, y: height / 2 };
   }
 
@@ -193,11 +192,13 @@ function bubbleChart() {
 
     // Set node attribute arrays
     keywordArr = createKeywordArray(rawData);
-    //colorArr = createColorArray(rawData);
+    colorArr = createColorArray(rawData);
     keyWordCenters = createKeywordCenters(rawData);
     keyWordsTitleX = createKeywordTitleX(rawData);
-    console.log(keyWordCenters);
-    console.log(keyWordsTitleX);
+
+    fillColor = d3.scale.ordinal()
+    .domain(keywordArr)
+    .range(colorArr);
 
     // Set the force's nodes to our newly created nodes array.
     force.nodes(nodes);
