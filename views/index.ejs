@@ -13,8 +13,6 @@
 		<script src="/bower_components/angular-material/angular-material.js"></script>
 		<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 		<script src='/javascripts/lib/d3.min.js'></script>
-
-		
 		<script src="/javascripts/index.module.js"></script>
 		<script src="/javascripts/controllers/main.controller.js"></script>
 		<script src="/javascripts/controllers/dataset.controller.js"></script>
@@ -31,6 +29,7 @@
 		  	<h1 ui-sref="home" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Home</h1>
 		    <h1 ui-sref="login" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Login</h1>
 		    <h1 ng-click='mctrl.submitLogout(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>Logout</h1>
+		    <h1 ui-sref="newDS" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>New Dataset</h1>
 		    <h1 ng-repeat='dataset in mctrl.allDS' ui-sref='dataset({dsID: dataset._id})' ng-click='mctrl.openLeftMenu();' class='sidenav-item'>{{dataset.title}}</h1>
 		  </md-sidenav>
 		  <div ui-view class='view-wrap fade'>

@@ -1,0 +1,19 @@
+<div class='newDS-wrap'>
+	<form class='newDS-form'>
+		<div>
+			<label for="title">Title: </label>
+			<input type="text" name="title" id="title" ng-model='dsctrl.title'>
+		</div>
+		<div>
+			<label for="keyword">Keyword:</label>
+			<input type="text" name="keyword" id="keyword" ng-model='dsctrl.keyword'>
+		</div>
+		<div>
+			<label for="color">Color:</label>
+			<input type="color" name="color" id="color" ng-model='dsctrl.color'>
+		</div>
+		<a ng-click='dsctrl.logKeyword();'>Save Keyword</a>
+		<h2 ng-repeat='key in dsctrl.keywordArr' style='color: {{key.color}}'>{{key.keyText}}</h2>
+		<a ng-click="dsctrl.submitNewDS();" >Save Dataset</a>
+	</form>
+</div>

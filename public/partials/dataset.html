@@ -5,3 +5,9 @@
 <div id='vis'>
 
 </div>
+
+<div>
+	<a ng-click="dsctrl.startDS();" ng-hide='dsctrl.currentDS.hasRun || dsctrl.currentDS.running'>Start Search</a>
+	<h2 ng-show='dsctrl.currentDS.running'>Dataset is running</h2>
+	<a ng-click="dsctrl.stopDS();" ng-show='dsctrl.currentDS.running'>Stop Search</a>
+</div>

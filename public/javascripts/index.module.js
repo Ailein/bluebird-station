@@ -36,9 +36,20 @@ angular.module('bbsApp', ['ngMaterial', 'ui.router'])
 			console.log('dataset');
 		}
 	};
+	var newDS = {
+		name: 'newDS',
+		url: '/new',
+		templateUrl: 'partials/newDataset.html',
+		controller: 'datasetCtrl',
+		controllerAs: 'dsctrl',
+		onEnter: function() {
+			console.log('new dataset');
+		}
+	};
 
 	$stateProvider.state(home);
 	$stateProvider.state(fourzerofour);
 	$stateProvider.state(login);
 	$stateProvider.state(dataset);
+	$stateProvider.state(newDS);
 });
