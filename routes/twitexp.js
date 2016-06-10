@@ -4,7 +4,7 @@ var request = require('request');
 var TEKEY;
 
 if(process.env.APIKEY) {
-	TEKEY = process.env.TEKEY;
+	TEKEY = process.env.APIKEY;
 }else {
 	TEKEY = require('../secrets/apikey');
 }
