@@ -7,7 +7,6 @@ angular.module('bbsApp')
 	self.password;
 
 	self.allDS;
-	self.currentDS;
 
 	self.errMsg;
 

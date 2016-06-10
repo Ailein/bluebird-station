@@ -34,11 +34,6 @@ angular.module('bbsApp', ['ngMaterial', 'ui.router'])
 		controllerAs: 'dsctrl',
 		onEnter: function() {
 			console.log('dataset');
-		},
-		resolve: {
-			datasetPromise: function($http, $stateParams) {
-				return $http.get('/twitexp/dataset/' + $stateParams.dsID);
-			}
 		}
 	};
 
