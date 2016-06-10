@@ -19,7 +19,7 @@ function bubbleChart() {
   var height = 600;
 
   // tooltip for mouseover functionality
-  //var tooltip = floatingTooltip('gates_tooltip', 240);
+  var tooltip = floatingTooltip('word_tooltip', 240);
 
   // Locations to move bubbles towards, depending
   // on which view mode is selected.
@@ -94,6 +94,7 @@ function bubbleChart() {
         console.log(i);
         return {
           id: rawData.keywords[i].keyText + '-' + d.text,
+          text: d.text,
           value: d.occ,
           keyword: rawData.keywords[i].keyText,
           x: Math.random() * width,
@@ -222,9 +223,9 @@ function bubbleChart() {
       .attr('r', 0)
       .attr('fill', function (d) { return fillColor(d.keyword); })
       .attr('stroke', function (d) { return d3.rgb(fillColor(d.keyword)).darker(); })
-      .attr('stroke-width', 2);
-/*      .on('mouseover', showDetail)
-      .on('mouseout', hideDetail);*/
+      .attr('stroke-width', 2)
+      .on('mouseover', showDetail)
+      .on('mouseout', hideDetail);
 
     // Fancy transition to make bubbles appear, ending with the
     // correct radius
@@ -302,14 +303,14 @@ function bubbleChart() {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
 
-    var content = '<span class="name">Title: </span><span class="value">' +
-                  d.name +
+    var content = '<span class="name">Word: </span><span class="value">' +
+                  d.text +
                   '</span><br/>' +
-                  '<span class="name">Amount: </span><span class="value">$' +
-                  addCommas(d.value) +
+                  '<span class="name">Keyword: </span><span class="value">' +
+                  d.keyword +
                   '</span><br/>' +
-                  '<span class="name">Year: </span><span class="value">' +
-                  d.year +
+                  '<span class="name">Occurrences: </span><span class="value">' +
+                  d.value +
                   '</span>';
     tooltip.showTooltip(content, d3.event);
   }
