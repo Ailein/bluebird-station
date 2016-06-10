@@ -90,6 +90,13 @@ function bubbleChart() {
     // Use map to convert each keywords data into usable node data
     var myNodes = [];
     for(var i=0; i<rawData.keywords.length; i++) {
+      for(var j=0; j<rawData.keywords[i].words.length; j++) {
+        if(rawData.keywords[i].keyText.toLowerCase() === rawData.keywords[i].words[j].text.toLowerCase()) {
+          rawData.keywords[i].words.splice(j--, 1);
+        }
+      }
+    }
+    for(var i=0; i<rawData.keywords.length; i++) {
       myNodes[i] = rawData.keywords[i].words.map(function(d) {
         console.log(i);
         return {
