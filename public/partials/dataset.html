@@ -1,4 +1,4 @@
-<div id="toolbar">
+<div id="toolbar" ng-show='dsctrl.currentDS.hasRun'>
   <a id="group" class="button active" onclick='myBubbleChart.toggleDisplay("group")'>Group</a>
   <a id="split" class="button" onclick='myBubbleChart.toggleDisplay("split")'>Split</a>
 </div>
@@ -6,7 +6,7 @@
 
 </div>
 
-<div>
+<div class='start-controls' ng-hide='dsctrl.currentDS.hasRun'>
 	<a ng-click="dsctrl.startDS();" ng-hide='dsctrl.currentDS.hasRun || dsctrl.currentDS.running'>Start Search</a>
 	<h2 ng-show='dsctrl.currentDS.running'>Dataset is running</h2>
 	<a ng-click="dsctrl.stopDS();" ng-show='dsctrl.currentDS.running'>Stop Search</a>
