@@ -96,8 +96,8 @@ function bubbleChart() {
           id: rawData.keywords[i].keyText + '-' + d.text,
           value: d.occ,
           keyword: rawData.keywords[i].keyText,
-          x: Math.random() * 900,
-          y: Math.random() * 800
+          x: Math.random() * width,
+          y: Math.random() * height
         };
       });
     };
